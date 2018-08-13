@@ -3,8 +3,6 @@ package com.echo.project.system.user.domain;
 import java.util.Date;
 
 public class User {
-    private Long id;
-
     private Long userId;
 
     private String loginId;
@@ -29,20 +27,14 @@ public class User {
 
     private String role;
 
+    private String Email;
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getUserId() {
@@ -132,4 +124,8 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getEmail() { return Email; }
+
+    public void setEmail(String email) { Email = email; }
 }

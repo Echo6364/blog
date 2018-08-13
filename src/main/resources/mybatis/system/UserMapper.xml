@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.echo.project.system.user.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="User">
-        <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="login_id" jdbcType="VARCHAR" property="loginId"/>
         <result column="login_password" jdbcType="VARCHAR" property="loginPassword"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
@@ -15,26 +14,28 @@
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="email" jdbcType="VARCHAR" property="Email"/>
     </resultMap>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from user_info
-        where id = #{id,jdbcType=BIGINT}
+        where user_id = #{userId,jdbcType=BIGINT}
     </select>
     <insert id="userSignUp" parameterType="User">
-    insert into user_info (id, user_id, login_id, 
+    insert into user_info (user_id, login_id,
       login_password, user_name, user_type, 
       gmt_create, gmt_modified, login_date, 
-      salt, status, remark, role)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{loginId,jdbcType=VARCHAR}, 
+      salt, status, remark, role, email)
+    values (#{userId,jdbcType=INTEGER}, #{loginId,jdbcType=VARCHAR},
       #{loginPassword,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{loginDate,jdbcType=TIMESTAMP}, 
-      #{salt,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=INTEGER}, #{role,jdbcType=INTEGER})
+      #{salt,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}
+       #{email,jdbcType=VARCHAR})
   </insert>
     <sql id="Base_Column_List">
-    id, user_id, login_id, login_password, user_name, user_type, gmt_create, gmt_modified,
-    login_date, salt, status, remark, role
+    user_id, login_id, login_password, user_name, user_type, gmt_create, gmt_modified,
+    login_date, salt, status, remark, role, eamil
   </sql>
     <select id="searchByLoginId" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
