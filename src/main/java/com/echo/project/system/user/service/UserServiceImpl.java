@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
+import static com.echo.common.utils.DateUtils.getNowDate;
+
 /**
  * @author echo
  * <p>
@@ -21,6 +25,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Long userSignUp(User user) {
+        Date date = getNowDate();
+        user.setLoginDate(date);
+        user.setGmtCreate(date);
+        user.setGmtModified(date);
+        user.setRole("user");
         return userMapper.userSignUp(user);
     }
 

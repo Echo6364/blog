@@ -24,12 +24,13 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setUnauthorizedUrl("/notRole");
 
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        //静态资源文件可以匿名访问  必须有，否则302错误
         filterChainDefinitionMap.put("/bootstrap/**", "anon");
         filterChainDefinitionMap.put("/jquery/**", "anon");
         filterChainDefinitionMap.put("/image/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/signUp", "anon");
-        shiroFilterFactoryBean.setSuccessUrl("/home");
+        shiroFilterFactoryBean.setSuccessUrl("/index");
         //其余接口一律拦截 必须放在最后
         filterChainDefinitionMap.put("/**", "authc");
 
@@ -50,8 +51,9 @@ public class ShiroConfig {
     @Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        hashedCredentialsMatcher.setHashAlgorithmName("md5"); //使用md5算法加密
-        hashedCredentialsMatcher.setHashIterations(3); //散列的迭代次数，相当于md5(md5(md5("")))
+        hashedCredentialsMatcher.setHashAlgorithmName("MD5"); //使用md5算法加密
+        hashedCredentialsMatcher.setHashIterations(2); //散列的迭代次数，相当于md5(md5(""))
+        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);//存储密码是否为16进制
         return hashedCredentialsMatcher;
     }
 

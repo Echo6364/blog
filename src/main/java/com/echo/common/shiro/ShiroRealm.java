@@ -55,7 +55,6 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.out.println("————身份认证————");
-
         String loginId = (String) token.getPrincipal();
         System.out.println(token.getCredentials());
         //可以在此加入缓存 默认两分钟
