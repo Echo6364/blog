@@ -14,7 +14,7 @@ public class PasswordEncrypt {
 
     public User encrypt(User user) {
         user.setSalt(randomNumberGenerator.nextBytes().toHex());
-        String newPassword = new SimpleHash(algorithmName, user.getLoginPassword(), ByteSource.Util.bytes(user.getSalt()), hashIterations).toHex();
+        String newPassword = new SimpleHash(algorithmName, user.getLoginPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()), hashIterations).toHex();
         user.setLoginPassword(newPassword);
         return user;
     }

@@ -128,4 +128,9 @@ public class User {
     public String getEmail() { return Email; }
 
     public void setEmail(String email) { Email = email; }
+
+    public String getCredentialsSalt() {
+        return loginId + salt;
+    }
+
 }

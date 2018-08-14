@@ -64,9 +64,9 @@ public class ShiroRealm extends AuthorizingRealm {
             return null;
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user, //用户名
+                user.getLoginId(), //用户名
                 user.getLoginPassword(), //密码
-                ByteSource.Util.bytes(user.getSalt()),  //salt=username+salt
+                ByteSource.Util.bytes(user.getCredentialsSalt()),  //salt=username+salt
                 getName() //realm name
         );
         return authenticationInfo;
