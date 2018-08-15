@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.echo.project.system.article.mapper">
+    <resultMap id="BaseResultMap" type="Article">
+        <id column="article_id" jdbcType="INTEGER" property="articleId"/>
+        <result column="ip" jdbcType="VARCHAR" property="ip"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="from_url" jdbcType="VARCHAR" property="fromUrl"/>
+        <result column="read_number" jdbcType="INTEGER" property="readNumber"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="sort" jdbcType="VARCHAR" property="sort"/>
+        <result column="index" jdbcType="VARCHAR" property="index"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Article">
+        <result column="text" jdbcType="LONGVARCHAR" property="text"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    article_id, ip, author, title, description, from_url, read_number, gmt_create,
+    gmt_modify, sort, index
+  </sql>
+    <sql id="Blob_Column_List">
+    text
+  </sql>
+
+    <select id="selectByArticleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article
+        where article_id = #{articleId,jdbcType=INTEGER}
+    </select>
+    <select id="selectArticleOrderByReadNumber" resultMap="BaseResultMap">
+        select *
+        from article
+        order by read_number DESC
+    </select>
+    <select id="selectArticleBySort" resultMap="BaseResultMap">
+        select *
+        from article
+        where sort = #{sort,jdbcType=VARCHAR}
+        order by gmt_creat DESC
+    </select>
+    <delete id="deleteArticleByArticleId" parameterType="java.lang.Integer">
+    delete from article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </delete>
+    <!-- 添加文章 -->
+    <insert id="addArticle" parameterType="Article">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">
+                article_id,
+            </if>
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="fromUrl != null">
+                from_url,
+            </if>
+            <if test="readNumber != null">
+                read_number,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModify != null">
+                gmt_modify,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="index != null">
+                index,
+            </if>
+            <if test="text != null">
+                text,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">
+                #{articleId,jdbcType=INTEGER},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="fromUrl != null">
+                #{fromUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="readNumber != null">
+                #{readNumber,jdbcType=INTEGER},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModify != null">
+                #{gmtModify,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=VARCHAR},
+            </if>
+            <if test="index != null">
+                #{index,jdbcType=VARCHAR},
+            </if>
+            <if test="text != null">
+                #{text,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!-- 由mybatis generator生成的 updateByPrimaryKeyWithBLOBs 可以修改text类型 updateByPrimaryKey不能 -->
+    <update id="editArticle" parameterType="Article">
+    update article
+    set
+     ip = #{ip,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      from_url = #{fromUrl,jdbcType=VARCHAR},
+      read_number = #{readNumber,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      sort = #{sort,jdbcType=VARCHAR},
+      index = #{index,jdbcType=VARCHAR},
+      text = #{text,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER},
+  </update>
+</mapper>

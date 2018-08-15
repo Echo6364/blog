@@ -126,6 +126,32 @@ label.icon-search span {
 	top:-11px;
 }
 /*--//search--*/
+.write-icons{
+    margin-top: 0.75em;
+}
+.write-icons a{
+    display: inline-block;
+    margin-left: 2.5em;
+}
+.write-icons a{
+    background: url(../images/write-icon.ico) no-repeat;
+    display: block;
+    height: 22px;
+    width: 100px;
+    -webkit-transition: .5s all;
+    transition: .5s all;
+    -moz-transition: .5s all;
+    padding: 0;
+}
+
+.write-icons a:hover{
+    -webkit-transform:rotateX(360deg);
+    transform:rotateX(360deg);
+    -moz-transform:rotateX(360deg);
+    -o-transform:rotateX(360deg);
+    -ms-transform:rotateX(360deg);
+}
+
 
 /*--social-icons--*/
 .social-icons {

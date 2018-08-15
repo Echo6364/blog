@@ -2,24 +2,30 @@
 spring:
 #数据库连接 配置
   datasource:
-    url: jdbc:mysql://localhost:3306/blog
+    url: jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=false
     username: root
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
+
 #thymeleaf 配置
   thymeleaf:
+# 在开发阶段建议关掉cache，否则可能出现页面更新问题
     cache: false
     encoding: UTF-8
     mode: HTML5
     suffix: .html
   resources:
+#  静态文件位置  使用thymeleaf模板时 默认为static
     static-locations: classpath:/static/
-# 由于mybatis的xml文件 跟mapper不在同一个文件夹，设置扫描配置
+
+#   mybatis 配置
 mybatis:
     typeAliasesPackage: com.echo.project
+    # 由于mybatis的xml文件 跟mapper不在同一个文件夹，设置扫描路径
     mapperLocations: classpath:mybatis/**/*Mapper.xml
     configLocation: classpath:mybatis/mybatis-config.xml
-# 默认端口设置为8088
+
+# spring-boot-tomcat 配置
 server:
   port: 8080
   tomcat:
@@ -28,6 +34,12 @@ shiro:
   user:
         loginUrl: /login
 
+#pagehelper 配置   参照github官方示例
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
 
 
 
