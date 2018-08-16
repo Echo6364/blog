@@ -17,6 +17,8 @@ spring:
   resources:
 #  静态文件位置  使用thymeleaf模板时 默认为static
     static-locations: classpath:/static/
+  http:
+    multipart:
 
 #   mybatis 配置
 mybatis:
@@ -40,6 +42,4 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
-
-
 

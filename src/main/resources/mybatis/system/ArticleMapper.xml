@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.echo.project.system.article.mapper">
+<mapper namespace="com.echo.project.system.article.mapper.ArticleMapper">
     <resultMap id="BaseResultMap" type="Article">
         <id column="article_id" jdbcType="INTEGER" property="articleId"/>
         <result column="ip" jdbcType="VARCHAR" property="ip"/>
@@ -12,7 +12,7 @@
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
         <result column="sort" jdbcType="VARCHAR" property="sort"/>
-        <result column="index" jdbcType="VARCHAR" property="index"/>
+        <result column="article_index" jdbcType="VARCHAR" property="articleIndex"/>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Article">
         <result column="text" jdbcType="LONGVARCHAR" property="text"/>
@@ -20,7 +20,7 @@
 
     <sql id="Base_Column_List">
     article_id, ip, author, title, description, from_url, read_number, gmt_create,
-    gmt_modify, sort, index
+    gmt_modify, sort, article_index
   </sql>
     <sql id="Blob_Column_List">
     text
@@ -51,84 +51,15 @@
   </delete>
     <!-- 添加文章 -->
     <insert id="addArticle" parameterType="Article">
-        insert into article
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="articleId != null">
-                article_id,
-            </if>
-            <if test="ip != null">
-                ip,
-            </if>
-            <if test="author != null">
-                author,
-            </if>
-            <if test="title != null">
-                title,
-            </if>
-            <if test="description != null">
-                description,
-            </if>
-            <if test="fromUrl != null">
-                from_url,
-            </if>
-            <if test="readNumber != null">
-                read_number,
-            </if>
-            <if test="gmtCreate != null">
-                gmt_create,
-            </if>
-            <if test="gmtModify != null">
-                gmt_modify,
-            </if>
-            <if test="sort != null">
-                sort,
-            </if>
-            <if test="index != null">
-                index,
-            </if>
-            <if test="text != null">
-                text,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="articleId != null">
-                #{articleId,jdbcType=INTEGER},
-            </if>
-            <if test="ip != null">
-                #{ip,jdbcType=VARCHAR},
-            </if>
-            <if test="author != null">
-                #{author,jdbcType=VARCHAR},
-            </if>
-            <if test="title != null">
-                #{title,jdbcType=VARCHAR},
-            </if>
-            <if test="description != null">
-                #{description,jdbcType=VARCHAR},
-            </if>
-            <if test="fromUrl != null">
-                #{fromUrl,jdbcType=VARCHAR},
-            </if>
-            <if test="readNumber != null">
-                #{readNumber,jdbcType=INTEGER},
-            </if>
-            <if test="gmtCreate != null">
-                #{gmtCreate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="gmtModify != null">
-                #{gmtModify,jdbcType=TIMESTAMP},
-            </if>
-            <if test="sort != null">
-                #{sort,jdbcType=VARCHAR},
-            </if>
-            <if test="index != null">
-                #{index,jdbcType=VARCHAR},
-            </if>
-            <if test="text != null">
-                #{text,jdbcType=LONGVARCHAR},
-            </if>
-        </trim>
-    </insert>
+    insert into article ( article_id, ip,
+      author, title, description,
+      from_url, read_number, gmt_create,
+      gmt_modify, text, article_index)
+    values (#{articleId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR},
+      #{author,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{fromUrl,jdbcType=VARCHAR}, #{readNumber,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP},
+      #{gmtModify,jdbcType=TIMESTAMP}, #{text,jdbcType=LONGVARCHAR} ,#{articleIndex,jdbcType=VARCHAR})
+  </insert>
     <!-- 由mybatis generator生成的 updateByPrimaryKeyWithBLOBs 可以修改text类型 updateByPrimaryKey不能 -->
     <update id="editArticle" parameterType="Article">
     update article
@@ -142,7 +73,7 @@
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       sort = #{sort,jdbcType=VARCHAR},
-      index = #{index,jdbcType=VARCHAR},
+      article_index = #{articleIndex,jdbcType=VARCHAR},
       text = #{text,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER},
   </update>

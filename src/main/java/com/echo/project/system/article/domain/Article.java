@@ -23,7 +23,7 @@ public class Article {
 
     private String sort;
 
-    private String index;
+    private String articleIndex;
 
     private String text;
 
@@ -107,12 +107,12 @@ public class Article {
         this.sort = sort == null ? null : sort.trim();
     }
 
-    public String getIndex() {
-        return index;
+    public String getArticleIndex() {
+        return articleIndex;
     }
 
-    public void setIndex(String index) {
-        this.index = index == null ? null : index.trim();
+    public void setArticleIndex(String articleIndex) {
+        this.articleIndex = articleIndex;
     }
 
     public String getText() {
