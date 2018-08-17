@@ -2,6 +2,8 @@ package com.echo.project.system.article.service;
 
 import com.echo.project.system.article.domain.Article;
 import com.echo.project.system.article.mapper.ArticleMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,13 @@ import static com.echo.common.utils.DateUtils.getNowDate;
 
 /**
  * @author echo
- *
+ * <p>
  * 2018-8-15
- *
+ * <p>
  * 接口实现类
  */
 @Service("articleService")
-public class ArticleServiceImpl implements ArticleService{
+public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleMapper articleMapper;
 
@@ -54,5 +56,18 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public List<Article> selectArticleBySort(String sort) {
         return selectArticleBySort(sort);
+    }
+
+    @Override
+    public PageInfo<Article> selectAllArticlePageInfo(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Article> articleList = articleMapper.selectAllArticle();
+        PageInfo<Article> pageInfo = new PageInfo<>(articleList);
+        return pageInfo;
+    }
+
+    @Override
+    public List<Article> selectAllArticle() {
+        return articleMapper.selectAllArticle();
     }
 }

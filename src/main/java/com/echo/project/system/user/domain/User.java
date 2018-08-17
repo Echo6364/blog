@@ -125,9 +125,13 @@ public class User {
         this.role = role;
     }
 
-    public String getEmail() { return Email; }
+    public String getEmail() {
+        return Email;
+    }
 
-    public void setEmail(String email) { Email = email; }
+    public void setEmail(String email) {
+        Email = email;
+    }
 
     public String getCredentialsSalt() {
         return loginId + salt;

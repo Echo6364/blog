@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 public class PasswordEncrypt {
     //生成随机数
     private static RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
+    private final String algorithmName = "MD5";
+    private final int hashIterations = 2;
 
     public User encrypt(User user) {
         user.setSalt(randomNumberGenerator.nextBytes().toHex());
@@ -23,7 +25,4 @@ public class PasswordEncrypt {
         String md5Pwd = new SimpleHash("MD5", loginPassword, ByteSource.Util.bytes(salt), hashIterations).toHex();
         return md5Pwd;
     }
-
-    private final String algorithmName = "MD5";
-    private final int hashIterations = 2;
 }

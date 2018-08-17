@@ -5,8 +5,6 @@ import com.echo.project.system.article.domain.Article;
 import com.echo.project.system.article.service.ArticleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.echo.project.system.user.service.UserService;
-import com.echo.project.system.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -33,7 +31,12 @@ public class ArticleTest {
         article.setGmtCreate(date);
         article.setTitle("测试");
         article.setText("测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试");
-       articleService.addArticle(article);
+        articleService.addArticle(article);
+    }
+    @Test
+    public void articleList(){
+        System.out.println(articleService.selectAllArticlePageInfo(1 , 5));
+        System.out.println(articleService.selectAllArticlePageInfo(1, 5).getList());
     }
 
 }

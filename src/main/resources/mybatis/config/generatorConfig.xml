@@ -35,15 +35,15 @@
         </javaClientGenerator>
 
         <!--<table schema="general" tableName="user_info" domainObjectName="User"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
         <table schema="general" tableName="article" domainObjectName="Article"
-        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-        enableSelectByExample="false" selectByExampleQueryId="false">
-        <property name="useActualColumnNames" value="false"/>
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
         </table>
 
         <!--<table schema="general" tableName="comment" domainObjectName="Comment"-->
@@ -59,9 +59,9 @@
         <!--</table>-->
 
         <!--<table schema="general" tableName="authority_info" domainObjectName="Authority"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
 

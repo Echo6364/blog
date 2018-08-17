@@ -19,4 +19,6 @@ public interface ArticleMapper {
 
     List<Article> selectArticleBySort(String sort);
 
+    List<Article> selectAllArticle();
+
 }

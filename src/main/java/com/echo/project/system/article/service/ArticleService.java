@@ -1,6 +1,7 @@
 package com.echo.project.system.article.service;
 
 import com.echo.project.system.article.domain.Article;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -16,5 +17,9 @@ public interface ArticleService {
     public List<Article> selectArticleOrderByReadNumber();
 
     public List<Article> selectArticleBySort(String sort);
+
+    public PageInfo<Article> selectAllArticlePageInfo(int currentPage, int pageSize);
+
+    public List<Article> selectAllArticle();
 
 }

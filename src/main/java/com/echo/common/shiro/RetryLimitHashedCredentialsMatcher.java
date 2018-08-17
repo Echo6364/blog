@@ -8,6 +8,7 @@ import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 
     private Cache<String, AtomicInteger> passwordRetryCache;
@@ -18,20 +19,20 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
 
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
-        String loginId = (String)token.getPrincipal();
+        String loginId = (String) token.getPrincipal();
         //retry count + 1
         AtomicInteger retryCount = passwordRetryCache.get(loginId);
-        if(retryCount == null) {
+        if (retryCount == null) {
             retryCount = new AtomicInteger(0);
             passwordRetryCache.put(loginId, retryCount);
         }
-        if(retryCount.incrementAndGet() > 5) {
+        if (retryCount.incrementAndGet() > 5) {
             //if retry count > 5 throw
             throw new ExcessiveAttemptsException();
         }
 
         boolean matches = super.doCredentialsMatch(token, info);
-        if(matches) {
+        if (matches) {
             //clear retry count
             passwordRetryCache.remove(loginId);
         }

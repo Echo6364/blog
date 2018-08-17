@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh">
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,7 @@
     <meta name="keywords" content=""/>
     <script type="applijewelleryion/x-javascript">
          addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
     </script>
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom Theme files -->
@@ -61,13 +62,8 @@
                     <nav class="link-effect-7" id="link-effect-7">
                         <ul class="nav navbar-nav">
                             <li class="active act"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="features.html">Features</a></li>
-                            <li><a href="travel.html">Travel</a></li>
-                            <li><a href="fashion.html">Fashion</a></li>
-                            <li><a href="music.html">Music</a></li>
-                            <li><a href="codes.html">Codes</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="system/user/user.html">About</a></li>
+                            <li><a href="/system/article/articleList">Technology</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -102,7 +98,7 @@
                placeholder="请输入标题">
         <br>
         <input type="text" class="form-control" id="description"
-               placeholder="请输入描述文字">
+               placeholder="请输入摘要">
         <br>
         <textarea rows="30" cols="40" id="articleText"></textarea>
         <br>
@@ -134,25 +130,29 @@
     <!-- !!将textarea 替换为自定义的文本编辑框-->
     CKEDITOR.replace('articleText');
 
-$("#addArticle").click(function () {
-    var title = $("input[id = 'title']").val();
-    var description = $("input[id = 'description']").val();
-    var sort = $("input[id = 'sort']").val();
-    var text =  CKEDITOR.instances.articleText.getData();
-    if (title == null){
-        alert("标题不得为空")
-    }
-    $.ajax({
-        type: "POST",
-        url: "/system/article/add",
-        data: {
-            "title" : title,
-            "description" : description,
-            "text" : text,
-            "sort" : sort,
+    $("#addArticle").click(function () {
+        var title = $("input[id = 'title']").val();
+        var sort = $("input[id = 'sort']").val();
+        var text = CKEDITOR.instances.articleText.getData();
+        if($("input[id = 'description']").val() == ""){
+            var description = CKEDITOR.instances.articleText.document.getBody().getText().substr(0,180);
+        } else {
+            var description = $("input[id = 'description']").val();
         }
+        if (title == null) {
+            alert("标题不得为空")
+        }
+        $.ajax({
+            type: "POST",
+            url: "/system/article/add",
+            data: {
+                "title": title,
+                "description": description,
+                "text": text,
+                "sort": sort,
+            }
+        })
     })
-})
 </script>
 
 <style type="text/css">

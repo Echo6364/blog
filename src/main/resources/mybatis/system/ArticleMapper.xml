@@ -34,16 +34,21 @@
         from article
         where article_id = #{articleId,jdbcType=INTEGER}
     </select>
-    <select id="selectArticleOrderByReadNumber" resultMap="BaseResultMap">
+    <select id="selectArticleOrderByReadNumber" parameterType="java.util.Map" resultMap="BaseResultMap">
         select *
         from article
         order by read_number DESC
     </select>
-    <select id="selectArticleBySort" resultMap="BaseResultMap">
+    <select id="selectArticleBySort" parameterType="java.util.Map" resultMap="BaseResultMap">
         select *
         from article
         where sort = #{sort,jdbcType=VARCHAR}
-        order by gmt_creat DESC
+        order by gmt_create DESC
+    </select>
+    <select id="selectAllArticle" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select *
+        from article
+        order by gmt_create DESC
     </select>
     <delete id="deleteArticleByArticleId" parameterType="java.lang.Integer">
     delete from article
