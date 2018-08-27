@@ -49,8 +49,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> selectArticleOrderByReadNumber() {
-        return articleMapper.selectArticleOrderByReadNumber();
+    public List<Article> selectArticleOrderByArticleView() {
+        return articleMapper.selectArticleOrderByArticleView();
     }
 
     @Override

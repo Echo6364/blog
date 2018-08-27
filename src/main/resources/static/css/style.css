@@ -55,9 +55,110 @@ label {
     float: left !important;
     margin-right: -15px;
 }
+.header-setting{
+    width: 25%;
+}
 
 .header-search {
     width: 25%;
+}
+/*--setting--*/
+.setting {
+    position: relative;
+    display: inline-block;
+    float : right;
+    left: 50px;
+}
+
+label.icon-setting {
+    color: #212121;
+    cursor: pointer;
+}
+
+.setting_form {
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    top: 15px;
+    overflow: hidden;
+    width: 20px;
+    height: 0px;
+    background: #303030;
+    transition: height 0.2s ease-out 0.5s, top 0.2s ease-out 0.5s, padding 0.2s ease-out 0.5s, width 0.3s ease-out 0.2s;
+    -webkit-transition: height 0.2s ease-out 0.5s, top 0.2s ease-out 0.5s, padding 0.2s ease-out 0.5s, width 0.3s ease-out 0.2s;
+}
+
+.setting_form form {
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.setting_form input[type='submit'] {
+    outline: none;
+    background: none;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #999;
+    text-transform: uppercase;
+    padding: 10px 28px;
+}
+
+.setting_form input[type='submit']:hover {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #212121;
+}
+
+.setting_form input[type='submit'] {
+    outline: none;
+    background: none;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #999;
+    text-transform: uppercase;
+    padding: 10px 28px;
+}
+
+.setting_form input[type='submit']:hover {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #212121;
+}
+
+.setting_box {
+    visibility: hidden;
+}
+
+.tlinks {
+    text-indent: -9999px;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.setting_box:checked ~ .setting_form {
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    top: 44px;
+    transition: height 0.2s ease-out, top 0.2s ease-out, padding 0.2s ease-out, 0.3s width ease-out 0.2s;
+    -webkit-transition: height 0.2s ease-out, top 0.2s ease-out, padding 0.2s ease-out, 0.3s width ease-out 0.2s;
+}
+
+.setting_box:checked ~ .setting_form form {
+    opacity: 1;
+    transition: 0.3s all ease-out 0.5s;
+    -webkit-transition: 0.3s all ease-out 0.5s;
+}
+
+label.icon-setting span {
+    color: #303030;
+    font-size: 1.1em;
+    top: -11px;
 }
 
 /*--search--*/
@@ -169,7 +270,7 @@ label.icon-search span {
     background: url(../images/write-icon.ico) no-repeat;
     display: block;
     height: 22px;
-    width: 25px;
+    width: 24px;
     -webkit-transition: .5s all;
     transition: .5s all;
     -moz-transition: .5s all;

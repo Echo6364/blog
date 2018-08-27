@@ -15,7 +15,7 @@ public interface ArticleMapper {
 
     Article selectByArticleId(Integer articleId);
 
-    List<Article> selectArticleOrderByReadNumber();
+    List<Article> selectArticleOrderByArticleView();
 
     List<Article> selectArticleBySort(String sort);
 

@@ -25,9 +25,10 @@ public class ShiroConfig {
 
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         //静态资源文件可以匿名访问  必须有，否则302错误
-        filterChainDefinitionMap.put("/bootstrap/**", "anon");
-        filterChainDefinitionMap.put("/jquery/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/image/**", "anon");
+        filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/signUp", "anon");
         shiroFilterFactoryBean.setSuccessUrl("/index");

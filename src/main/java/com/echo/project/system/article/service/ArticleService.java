@@ -14,7 +14,7 @@ public interface ArticleService {
 
     public Article selectByArticleId(Integer articleId);
 
-    public List<Article> selectArticleOrderByReadNumber();
+    public List<Article> selectArticleOrderByArticleView();
 
     public List<Article> selectArticleBySort(String sort);
 

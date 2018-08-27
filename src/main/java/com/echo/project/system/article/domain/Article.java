@@ -15,7 +15,7 @@ public class Article {
 
     private String fromUrl;
 
-    private Integer readNumber;
+    private Integer articleView;
 
     private Date gmtCreate;
 
@@ -75,12 +75,12 @@ public class Article {
         this.fromUrl = fromUrl == null ? null : fromUrl.trim();
     }
 
-    public Integer getReadNumber() {
-        return readNumber;
+    public Integer getarticleView() {
+        return articleView;
     }
 
-    public void setReadNumber(Integer readNumber) {
-        this.readNumber = readNumber;
+    public void setarticleView(Integer articleView) {
+        this.articleView = articleView;
     }
 
     public Date getGmtCreate() {
