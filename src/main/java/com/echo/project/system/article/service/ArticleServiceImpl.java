@@ -45,7 +45,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article selectByArticleId(Integer articleId) {
-        return null;
+        return articleMapper.selectByArticleId(articleId);
     }
 
     @Override

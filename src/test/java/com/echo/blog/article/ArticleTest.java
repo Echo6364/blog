@@ -37,6 +37,7 @@ public class ArticleTest {
     public void articleList(){
         System.out.println(articleService.selectAllArticlePageInfo(1 , 5));
         System.out.println(articleService.selectAllArticlePageInfo(1, 5).getList());
+        System.out.println(articleService.selectByArticleId(50));
     }
 
 }

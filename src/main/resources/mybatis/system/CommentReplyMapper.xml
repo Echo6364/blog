@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.echo.comment.mapper.CommentReplyMapper">
-  <resultMap id="BaseResultMap" type="com.echo.comment.domain.CommentReply">
+<mapper namespace="com.echo.project.system.comment.mapper.CommentReplyMapper">
+  <resultMap id="BaseResultMap" type="com.echo.project.system.comment.domain.CommentReply">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="comment_id" jdbcType="INTEGER" property="commentId" />
     <result column="reply_id" jdbcType="INTEGER" property="replyId" />
@@ -23,7 +23,7 @@
     delete from comment_reply
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.echo.comment.domain.CommentReply" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.CommentReply" useGeneratedKeys="true">
     insert into comment_reply (comment_id, reply_id, reply_type, 
       content, from_user_id, to_user_id
       )
@@ -31,7 +31,7 @@
       #{content,jdbcType=VARCHAR}, #{fromUserId,jdbcType=INTEGER}, #{toUserId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.echo.comment.domain.CommentReply" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.CommentReply" useGeneratedKeys="true">
     insert into comment_reply
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="commentId != null">
@@ -74,7 +74,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.echo.comment.domain.CommentReply">
+  <update id="updateByPrimaryKeySelective" parameterType="com.echo.project.system.comment.domain.CommentReply">
     update comment_reply
     <set>
       <if test="commentId != null">
@@ -98,7 +98,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.echo.comment.domain.CommentReply">
+  <update id="updateByPrimaryKey" parameterType="com.echo.project.system.comment.domain.CommentReply">
     update comment_reply
     set comment_id = #{commentId,jdbcType=INTEGER},
       reply_id = #{replyId,jdbcType=INTEGER},

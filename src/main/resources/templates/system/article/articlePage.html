@@ -7,6 +7,8 @@
     <meta name="keywords" content=""/>
     <script type="applijewelleryion/x-javascript">
          addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+
     </script>
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom Theme files -->
@@ -91,16 +93,18 @@
 <!-- technology-left -->
 <div class="technology">
     <div class="container">
-        <div class="col-md-9 technology-left">
+        <div class="col-md-9 technology-left" id="leftArea">
             <div class="blog">
                 <h2 class="w3">TRAVEL</h2>
                 <!-- 使用 thymeleaf 遍历接受来自controller的 articleList  -->
                 <!-- idea 看thymeleaf标签th: 会报错，不影响使用-->
-                <div class="blog-grids1"  th:each= "articlePage : ${articleList}">
+                <div class="blog-grids1" th:each="articlePage : ${articleList}">
                     <div class="col-md-12 blog-grid">
                         <div class="blog-grid-right1">
                             <!-- 标题 -->
-                            <a href="/singlepage.html" th:text="${articlePage.title}">sint occaecat cupidatat</a>
+                            <a th:href="@{'details/'+${articlePage.articleId}}" th:text="${articlePage.title}"
+                               th:id="'articleIdHref'+${articlePage.articleId}">sint
+                                occaecat cupidatat</a>
                             <!--创建时间-->
                             <h4 th:text="${articlePage.gmtCreate}">28 July 2016</h4>
                             <!-- 文本 -->
@@ -141,12 +145,13 @@
                     </div>
                     <h4>Popular Posts </h4>
                     <div class="blog-grids" th:each="articlePage : *{articleListOrderByArticleView}">
-                        <div class="blog-grid-left" >
+                        <div class="blog-grid-left">
                             <a href="../../singlepage.html"><img src="../../../static/images/t2.jpg"
                                                                  class="img-responsive" alt=""></a>
                         </div>
                         <div class="blog-grid-right">
-                            <h5><a href="../../singlepage.html" th:text="${articlePage.title}">Pellentesque dui Maecenas male</a></h5>
+                            <h5><a href="../../singlepage.html" th:text="${articlePage.title}">Pellentesque dui Maecenas
+                                male</a></h5>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -188,45 +193,7 @@
         <!-- technology-right -->
     </div>
 </div>
-<div class="footer">
-    <div class="container">
-        <div class="col-md-4 footer-left">
-            <h4>About Me</h4>
-            <p>Consectetur adipisicing Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-            <img src="../../../static/images/t4.jpg" class="img-responsive" alt="">
-            <div class="bht1">
-                <a href="../../singlepage.html">Read More</a>
-            </div>
-        </div>
-        <div class="col-md-4 footer-middle">
-            <h4>Latest Tweet</h4>
-            <div class="mid-btm">
-                <p>Sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <a href="http://www.cssmoban.com/">企业网站模板</a>
-            </div>
 
-            <p>Consectetur adipisicing Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-            <a href="http://www.cssmoban.com/">企业网站模板</a>
-
-        </div>
-        <div class="col-md-4 footer-right">
-            <h4>Newsletter</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            <div class="name">
-                <form action="#" method="post">
-                    <input type="text" placeholder="Your Name" required="">
-                    <input type="text" placeholder="Your Email" required="">
-                    <input type="submit" value="Subscribed Now">
-                </form>
-
-            </div>
-
-            <div class="clearfix"></div>
-
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
 <div class="copyright">
     <div class="container">
         <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
@@ -238,6 +205,24 @@
 </body>
 </html>
 
+<script type="text/javascript">
+    function postId() {
+        var articleId;
+        $('articleIdHref*').onclick
+        {
+            articleId = $(this).id.replace(/[^\d.]/g, "");
+            $.ajax({
+                type: "POST",
+                data: {
+                    articleId: articleId
+                },
+                url: "/system/article/details/*"
+            })
+        }
+
+    }
+
+</script>
 
 
 

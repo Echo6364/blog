@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.echo.comment.mapper.CommentMapper">
-  <resultMap id="BaseResultMap" type="com.echo.comment.domain.Comment">
+<mapper namespace="com.echo.project.system.comment.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.echo.project.system.comment.domain.Comment">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="article_id" jdbcType="INTEGER" property="articleId" />
     <result column="article_type" jdbcType="INTEGER" property="articleType" />
@@ -21,13 +21,13 @@
     delete from comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.echo.comment.domain.Comment" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.Comment" useGeneratedKeys="true">
     insert into comment (article_id, article_type, content, 
       from_user_id)
     values (#{articleId,jdbcType=INTEGER}, #{articleType,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
       #{fromUserId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.echo.comment.domain.Comment" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.Comment" useGeneratedKeys="true">
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="articleId != null">
@@ -58,7 +58,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.echo.comment.domain.Comment">
+  <update id="updateByPrimaryKeySelective" parameterType="com.echo.project.system.comment.domain.Comment">
     update comment
     <set>
       <if test="articleId != null">
@@ -76,7 +76,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.echo.comment.domain.Comment">
+  <update id="updateByPrimaryKey" parameterType="com.echo.project.system.comment.domain.Comment">
     update comment
     set article_id = #{articleId,jdbcType=INTEGER},
       article_type = #{articleType,jdbcType=INTEGER},
@@ -84,4 +84,11 @@
       from_user_id = #{fromUserId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="addComment" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.Comment" useGeneratedKeys="true">
+    insert into comment (article_id, article_type, content,
+      from_user_id)
+    values (#{articleId,jdbcType=INTEGER}, #{articleType,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR},
+      #{fromUserId,jdbcType=INTEGER})
+  </insert>
 </mapper>
