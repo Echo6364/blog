@@ -103,7 +103,7 @@
                         <div class="blog-grid-right1">
                             <!-- 标题 -->
                             <a th:href="@{'details/'+${articlePage.articleId}}" th:text="${articlePage.title}"
-                               th:id="'articleIdHref'+${articlePage.articleId}">sint
+                               th:id="'articleIdLink'+${articlePage.articleId}" >sint
                                 occaecat cupidatat</a>
                             <!--创建时间-->
                             <h4 th:text="${articlePage.gmtCreate}">28 July 2016</h4>
@@ -205,24 +205,6 @@
 </body>
 </html>
 
-<script type="text/javascript">
-    function postId() {
-        var articleId;
-        $('articleIdHref*').onclick
-        {
-            articleId = $(this).id.replace(/[^\d.]/g, "");
-            $.ajax({
-                type: "POST",
-                data: {
-                    articleId: articleId
-                },
-                url: "/system/article/details/*"
-            })
-        }
-
-    }
-
-</script>
 
 
 

@@ -13,4 +13,8 @@ public interface UserMapper {
     User searchByLoginId(String loginId);
 
     String getRoleByLoginId(String loginId);
+
+    Long editUserInfo(User user);
+
+    User getUserInfo(Integer userId);
 }

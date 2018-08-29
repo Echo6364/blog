@@ -29,6 +29,10 @@ public class User {
 
     private String Email;
 
+    private String registerIp;
+
+    private String profilePicture;
+
     public String getRemark() {
         return remark;
     }
@@ -135,6 +139,22 @@ public class User {
 
     public String getCredentialsSalt() {
         return loginId + salt;
+    }
+
+    public String getRegisterIp() {
+        return registerIp;
+    }
+
+    public void setRegisterIp(String registerIp) {
+        this.registerIp = registerIp;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
 }

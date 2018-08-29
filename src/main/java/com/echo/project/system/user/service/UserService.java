@@ -17,4 +17,8 @@ public interface UserService {
     public User searchByLoginId(String loginId);
 
     public String getRoleByLoginId(String loginId);
+
+    public Long editUserInfo(User user);
+
+    public User getUserInfo(Integer userId);
 }

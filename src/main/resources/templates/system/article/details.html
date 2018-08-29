@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="zh">
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,15 +108,18 @@
         <div class="col-md-9 technology-left">
             <div class="agileinfo">
                 <div class="single">
-                    <div class="b-bottom" >
-                        <h5 class="top" th:text="${articleDetailsInfo['title']}">What turn out consetetur sadipscing elit</h5>
-                        <p class="sub" th:text="${articleDetailsInfo['text']}">Lorem Ipsum is simply dummy text of the printing
+                    <div class="b-bottom">
+                        <h5 class="top" th:text="${articleDetailsInfo['title']}">What turn out consetetur sadipscing
+                            elit</h5>
+                        <p class="sub" th:text="${articleDetailsInfo['text']}">Lorem Ipsum is simply dummy text of the
+                            printing
                             and typesetting industry.Lorem
                             Ipsum has been the industry's standard dummy text ever since,Lorem Ipsum is simply dummy
                             text of the printing and typesetting industry.</p>
                         <p th:text="${articleDetailsInfo['gmtCreate']}">On Aug 01 <a class="span_link" href="#">
                         </a><a class="span_link" href="#"><span
-                                class="glyphicon glyphicon-eye-open" th:value="${articleDetailsInfo['articleView']}"></span>56 </a></p>
+                                class="glyphicon glyphicon-eye-open"
+                                th:value="${articleDetailsInfo['articleView']}"></span>56 </a></p>
 
                     </div>
                 </div>
@@ -157,58 +161,21 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="media response-info">
-                        <div class="media-left response-text-left">
-                            <a href="#">
-                                <img src="../static/images/sin1.jpg" class="img-responsive" alt="">
-                            </a>
-                        </div>
-                        <div class="media-body response-text-right">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                                passages of Lorem Ipsum available,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <ul>
-                                <li>Jul 22, 2016</li>
-                                <li><a href="#">Reply</a></li>
-                            </ul>
-                            <div class="media response-info">
-                                <div class="media-left response-text-left">
-                                    <a href="#">
-                                        <img src="../static/images/sin2.jpg" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-                                <div class="media-body response-text-right">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many
-                                        variations of passages of Lorem Ipsum available,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    <ul>
-                                        <li>Aug 01, 2016</li>
-                                        <li><a href="#">Reply</a></li>
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="coment-form">
-                    <h4>Leave your comment</h4>
-                    <form action="#" method="post">
-                        <input type="text" value="Name " name="name" onfocus="this.value = '';"
-                               onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                        <input type="email" value="Email" name="email" onfocus="this.value = '';"
-                               onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                        <input type="text" value="Website" name="websie" onfocus="this.value = '';"
-                               onblur="if (this.value == '') {this.value = 'Website';}" required="">
-                        <textarea onfocus="this.value = '';"
-                                  onblur="if (this.value == '') {this.value = 'Your Comment...';}" required="">Your Comment...</textarea>
-                        <input type="submit" value="Submit Comment">
-                    </form>
-                </div>
-                <div class="clearfix"></div>
             </div>
+            <div class="coment-form">
+                <h4>Leave your comment</h4>
+                <form action="#" method="post">
+                    <textarea onfocus="this.value = '';"
+                              onblur="if (this.value == '') {this.value = 'Your Comment...';}" required=""
+                              id="commentText">Your Comment...</textarea>
+                    <input type="submit" value="Submit Comment" id="submitComment">
+                </form>
+            </div>
+            <div class="clearfix"></div>
         </div>
+
         <!-- technology-right -->
         <div class="col-md-3 technology-right">
 
@@ -226,7 +193,7 @@
                     <h4>Popular Posts </h4>
                     <div class="blog-grids">
                         <div class="blog-grid-left">
-                            <a href="singlepage.html"><img src="../static/images/t2.jpg" class="img-responsive" alt=""></a>
+                            <a href="singlepage.html"><img src="images/t2.jpg" class="img-responsive" alt=""></a>
                         </div>
                         <div class="blog-grid-right">
 
@@ -236,7 +203,7 @@
                     </div>
                     <div class="blog-grids">
                         <div class="blog-grid-left">
-                            <a href="singlepage.html"><img src="../static/images/m2.jpg" class="img-responsive" alt=""></a>
+                            <a href="singlepage.html"><img src="images/m2.jpg" class="img-responsive" alt=""></a>
                         </div>
                         <div class="blog-grid-right">
 
@@ -246,7 +213,7 @@
                     </div>
                     <div class="blog-grids">
                         <div class="blog-grid-left">
-                            <a href="singlepage.html"><img src="../static/images/f2.jpg" class="img-responsive" alt=""></a>
+                            <a href="singlepage.html"><img src="images/f2.jpg" class="img-responsive" alt=""></a>
                         </div>
                         <div class="blog-grid-right">
 
@@ -256,7 +223,7 @@
                     </div>
                     <div class="blog-grids">
                         <div class="blog-grid-left">
-                            <a href="singlepage.html"><img src="../static/images/t3.jpg" class="img-responsive" alt=""></a>
+                            <a href="singlepage.html"><img src="images/t3.jpg" class="img-responsive" alt=""></a>
                         </div>
                         <div class="blog-grid-right">
 
@@ -266,7 +233,7 @@
                     </div>
                     <div class="blog-grids">
                         <div class="blog-grid-left">
-                            <a href="singlepage.html"><img src="../static/images/m3.jpg" class="img-responsive" alt=""></a>
+                            <a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
                         </div>
                         <div class="blog-grid-right">
 
@@ -278,24 +245,24 @@
                         <h4>Instagram</h4>
                         <ul>
 
-                            <li><a href="singlepage.html"><img src="../static/images/t1.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/m1.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/f1.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/m2.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/f2.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/t2.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/f3.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/t3.jpg" class="img-responsive"
-                                                               alt=""></a></li>
-                            <li><a href="singlepage.html"><img src="../static/images/m3.jpg" class="img-responsive"
-                                                               alt=""></a></li>
+                            <li><a href="singlepage.html"><img src="images/t1.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/m1.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/f1.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/m2.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/f2.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/t2.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/f3.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/t3.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+                            </li>
                         </ul>
                     </div>
 
@@ -312,6 +279,7 @@
         <!-- technology-right -->
     </div>
 </div>
+
 <div class="copyright wow fadeInDown" data-wow-duration="0.8s" data-wow-delay="0.2s">
     <div class="container">
         <p><a target="_blank" title="Echo Blog">Echo Blog</a> - 2018 </p>
@@ -319,3 +287,19 @@
 </div>
 </body>
 </html>
+
+<script th:inline="javascript">
+    $("#submitComment").click(function () {
+        var content = $("#commentText").val();
+        var articleId = [[${articleDetailsInfo['articleId']}]]
+        $.ajax({
+            type: "POST",
+            url: "/system/article/details/addComment",
+            data: {
+                content: content,
+                articleId : articleId,
+            },
+        })
+
+    })
+</script>

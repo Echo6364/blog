@@ -66,4 +66,16 @@ public class UserServiceImpl implements UserService {
     public String getRoleByLoginId(String loginId) {
         return userMapper.getRoleByLoginId(loginId);
     }
+
+    @Override
+    public Long editUserInfo(User user) {
+        Date date = getNowDate();
+        user.setGmtModified(date);
+        return userMapper.editUserInfo(user);
+    }
+
+    @Override
+    public User getUserInfo(Integer userId) {
+        return userMapper.getUserInfo(userId);
+    }
 }

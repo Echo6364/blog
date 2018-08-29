@@ -15,6 +15,8 @@
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="role" jdbcType="VARCHAR" property="role"/>
         <result column="email" jdbcType="VARCHAR" property="Email"/>
+        <result column="profile_picture" jdbcType="VARCHAR" property="profilePicture"/>
+        <result column="register_ip" jdbcType="VARCHAR" property="registerIp"/>
     </resultMap>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -36,8 +38,17 @@
   </insert>
     <sql id="Base_Column_List">
     user_id, login_id, login_password, user_name, user_type, gmt_create, gmt_modified,
-    login_date, salt, status, remark, role, email
+    login_date, salt, status, remark, role, email, profile_picture, register_ip
   </sql>
+
+
+    <select id="getUserInfo" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+
     <select id="searchByLoginId" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -50,5 +61,20 @@
         FROM user_info
         WHERE login_id = #{login_id,jdbcType=VARCHAR}
     </select>
-
+    <update id="editUserInfo" parameterType="User">
+  update user_infoset login_id = #{loginId,jdbcType=VARCHAR},
+  login_password = #{loginPassword,jdbcType=VARCHAR},
+  user_name = #{userName,jdbcType=VARCHAR},
+  user_type = #{userType,jdbcType=INTEGER},
+  gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+  gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+  login_date = #{loginDate,jdbcType=TIMESTAMP},
+  salt = #{salt,jdbcType=VARCHAR},
+  `status` = #{status,jdbcType=INTEGER},
+  remark = #{remark,jdbcType=VARCHAR},
+  `role` = #{role,jdbcType=VARCHAR},
+  email = #{email,jdbcType=VARCHAR},
+  register_ip = #{registerIp,jdbcType=VARCHAR},profile_picture = #{profilePicture,jdbcType=VARCHAR}
+  where user_id = #{userId,jdbcType=BIGINT}
+</update>
 </mapper>
