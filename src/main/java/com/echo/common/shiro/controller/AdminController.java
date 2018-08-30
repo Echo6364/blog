@@ -6,14 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created with IntelliJ IDEA
- *
- * @Author yuanhaoyue swithaoy@gmail.com
- * @Description 权限：管理员
- * @Date 2018-04-06
- * @Time 20:31
- */
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

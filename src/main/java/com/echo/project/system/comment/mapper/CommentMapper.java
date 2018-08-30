@@ -3,6 +3,8 @@ package com.echo.project.system.comment.mapper;
 import com.echo.project.system.comment.domain.Comment;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer id);
@@ -18,4 +20,6 @@ public interface CommentMapper {
     int updateByPrimaryKey(Comment record);
 
     Long addComment(Comment comment);
+
+    List<Comment> getComment(Integer articleId);
 }

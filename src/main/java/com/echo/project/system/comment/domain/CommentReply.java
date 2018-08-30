@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 /**
  * comment_reply
- * @author 
+ *
+ * @author
  */
 public class CommentReply implements Serializable {
     private Integer id;
@@ -20,6 +21,8 @@ public class CommentReply implements Serializable {
     private Integer fromUserId;
 
     private Integer toUserId;
+
+    private Integer articleId;
 
     private static final long serialVersionUID = 1L;
 
@@ -77,5 +80,13 @@ public class CommentReply implements Serializable {
 
     public void setToUserId(Integer toUserId) {
         this.toUserId = toUserId;
+    }
+
+    public Integer getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
     }
 }

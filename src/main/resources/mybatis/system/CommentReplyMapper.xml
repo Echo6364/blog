@@ -9,9 +9,10 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="from_user_id" jdbcType="INTEGER" property="fromUserId" />
     <result column="to_user_id" jdbcType="INTEGER" property="toUserId" />
+    <result column="article_id" jdbcType="INTEGER" property="articleID" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, comment_id, reply_id, reply_type, content, from_user_id, to_user_id
+    id, comment_id, reply_id, reply_type, content, from_user_id, to_user_id, article_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -108,4 +109,14 @@
       to_user_id = #{toUserId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <insert id="addCommentReply" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.CommentReply" useGeneratedKeys="true">
+    insert into comment_reply (comment_id, reply_id, reply_type,
+      content, from_user_id, to_user_id, article_id
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{replyId,jdbcType=INTEGER}, #{replyType,jdbcType=INTEGER},
+      #{content,jdbcType=VARCHAR}, #{fromUserId,jdbcType=INTEGER}, #{toUserId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}
+      )
+  </insert>
 </mapper>

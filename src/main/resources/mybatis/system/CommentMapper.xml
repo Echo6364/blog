@@ -84,6 +84,13 @@
       from_user_id = #{fromUserId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+<!---->
+  <select id="getComment" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </select>
 
   <insert id="addComment" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.Comment" useGeneratedKeys="true">
     insert into comment (article_id, article_type, content,

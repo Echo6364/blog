@@ -16,4 +16,6 @@ public interface CommentReplyMapper {
     int updateByPrimaryKeySelective(CommentReply record);
 
     int updateByPrimaryKey(CommentReply record);
+
+    Long addCommentReply (CommentReply commentReply);
 }

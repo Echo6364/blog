@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<html lang="zh">
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,8 @@
     <meta name="keywords" content=""/>
     <script type="applijewelleryion/x-javascript">
          addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+
     </script>
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom Theme files -->
@@ -95,47 +97,52 @@
 <div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
+                <br>
                 <h3>
                     用户资料
-                </h3><img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded" />
+                </h3>
+                <br>
+                <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
+                          class="rounded"/>
                 <form role="form">
 
                     <div class="form-group">
 
                         <label for="exampleInputFile">
-                            File input
+                            头像上传
                         </label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" />
-                        <p class="help-block">
-                            Example block-level help text here.
-                        </p>
+                        <input type="file" class="form-control-file" id="exampleInputFile"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        Submit
-                    </button>
+                    <br>
                 </form>
                 <label>
                     UID
                 </label>
-                <input  class="form-control" id="loginId" />
+                <input class="form-control" id="userId" readonly="readonly" style="width: auto"/>
                 <label>
                     用户名
                 </label>
-                <input  class="form-control" id="" />
+                <input class="form-control" id="loginId" readonly="readonly" style="width: auto"/>
                 <label>
                     Email
                 </label>
-                <input  type="email" class="form-control"  />
+                <input type="email" class="form-control" id="email" style="width: 400px"/>
                 <label>
                     个人介绍
                 </label>
-                <textarea type="email" class="" />
+                <textarea class="form-control" rows="3" id="remark"></textarea>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        更新
+                    </button>
+                </div>
+                <br>
             </div>
-            </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
             </div>
         </div>
     </div>

@@ -6,14 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-/**
- * Created with IntelliJ IDEA
- *
- * @Author yuanhaoyue swithaoy@gmail.com
- * @Description 异常处理 controller
- * @Date 2018-05-02
- * @Time 20:40
- */
+
 @RestControllerAdvice
 public class ExceptionController {
     private final ResultMap resultMap;
