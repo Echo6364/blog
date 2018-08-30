@@ -2,6 +2,8 @@ package com.echo.project.system.article.controller;
 
 import com.echo.project.system.article.domain.Article;
 import com.echo.project.system.article.service.ArticleService;
+import com.echo.project.system.comment.domain.Comment;
+import com.echo.project.system.comment.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private CommentService commentService;
 
     @RequestMapping(value = "/add")
     public String addArticle(Article article) {
@@ -58,9 +62,16 @@ public class ArticleController {
         Article articleDetailsInfo = articleService.selectByArticleId(articleId);
         model.addAttribute("articleDetailsInfo",articleDetailsInfo);
 
+        int pageSize = 5;
+        int currentPage = 1;
+        List<Comment> commentList = commentService.getComment(articleId, currentPage, pageSize).getList();
+        model.addAttribute("commentList", commentList);
+
         List<Article> articleListOrderByArticleView = articleService.selectArticleOrderByArticleView();
         model.addAttribute("articleListOrderByArticleView",articleListOrderByArticleView);
         return ("system/article/details");
+
+
     }
 
 }

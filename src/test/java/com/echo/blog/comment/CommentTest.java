@@ -31,7 +31,7 @@ public class CommentTest {
         Comment comment = new Comment();
         comment.setArticleId(1);
         comment.setContent("222222222222222222222222222222222222222222222222222222");
-        commentService.addComment(comment);
+        System.out.println(commentService.getComment(50,1,5));
     }
 
 }

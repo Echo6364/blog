@@ -110,6 +110,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="getCommentReplyByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment_reply
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </select>
 
   <insert id="addCommentReply" keyColumn="id" keyProperty="id" parameterType="com.echo.project.system.comment.domain.CommentReply" useGeneratedKeys="true">
     insert into comment_reply (comment_id, reply_id, reply_type,
