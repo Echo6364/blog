@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * 登录验证
+ * 登录验证 shiro使用
  *
  * @author echo
  */

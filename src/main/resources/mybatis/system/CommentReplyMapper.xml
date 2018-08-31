@@ -9,7 +9,7 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="from_user_id" jdbcType="INTEGER" property="fromUserId" />
     <result column="to_user_id" jdbcType="INTEGER" property="toUserId" />
-    <result column="article_id" jdbcType="INTEGER" property="articleID" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
   </resultMap>
   <sql id="Base_Column_List">
     id, comment_id, reply_id, reply_type, content, from_user_id, to_user_id, article_id

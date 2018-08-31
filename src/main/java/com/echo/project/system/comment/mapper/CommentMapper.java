@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 评论Mapper接口类
+ */
 @Repository
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer id);

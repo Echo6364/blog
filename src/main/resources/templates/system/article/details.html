@@ -9,6 +9,10 @@
     <script type="applijewelleryion/x-javascript">
          addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 
+
+
+
+
     </script>
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom Theme files -->
@@ -59,30 +63,35 @@
                 <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                     <nav class="link-effect-7" id="link-effect-7">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="system/main/about.html">About</a></li>
-                            <li><a href="features.html">Features</a></li>
-                            <li><a href="system/article/articlePage.html">Travel</a></li>
-                            <li><a href="fashion.html">Fashion</a></li>
-                            <li><a href="music.html">Music</a></li>
-                            <li><a href="codes.html">Codes</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/index">Home</a></li>
+                            <li><a href="/system/user/user.html">About</a></li>
+                            <li class="active act"><a href="/system/article/articlePage">Technology</a></li>
                         </ul>
                     </nav>
                 </div>
                 <!-- /.navbar-collapse -->
             </nav>
         </div>
-        <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s"
+        <div class="nav navbar-nav navbar-right write-icons wow fadeInLeft animated animated " data-wow-delay=".5s"
              style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
             <ul>
-                <li><a href="#"> </a></li>
-                <li><a href="#" class="pin"> </a></li>
-                <li><a href="#" class="in"> </a></li>
-                <li><a href="#" class="be"> </a></li>
-
-                <li><a href="#" class="vimeo"> </a></li>
+                <a href="/system/article/add"></a>
             </ul>
+        </div>
+        <div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s"
+             style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+            <div class="header-setting">
+                <div class="setting">
+                    <input class="setting_box" type="checkbox" id="setting_box">
+                    <label class="icon-setting" for="setting_box"><span class="glyphicon glyphicon-cog"
+                                                                        aria-hidden="true"></span></label>
+                    <div class="setting_form">
+                        <form action="/system/user/info" method="post">
+                            <input type="submit" value="编辑个人资料">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -130,21 +139,24 @@
                     <div class="media response-info" th:each="articleDetails : ${commentList}">
                         <div class="media-left response-text-left">
                             <a href="#">
-                                <img src="../static/images/sin1.jpg" class="img-responsive" alt="">
+                                <img src="/images/sin1.jpg" class="img-responsive" alt="">
                             </a>
                         </div>
                         <div class="media-body response-text-right">
-                            <p th:text="${articleDetails.content}">Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
+                            <p th:text="${articleDetails.content}">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit,There are many variations of
                                 passages of Lorem Ipsum available,
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <ul>
                                 <!--<li>Jun 21, 2016</li>-->
-                                <li><a href="#">Reply</a></li>
+                                <li><a href="javascript:void(0);" class="reply_btn"
+                                       th:onclick="|javascript:commentReply(${articleDetails.id},${articleDetails.fromUserId})|">Reply</a>
+                                </li>
                             </ul>
                             <div class="media response-info">
                                 <div class="media-left response-text-left">
                                     <a href="#">
-                                        <img src="../static/images/sin2.jpg" class="img-responsive" alt="">
+                                        <img src="/images/sin2.jpg" class="img-responsive" alt="">
                                     </a>
                                 </div>
                                 <div class="media-body response-text-right">
@@ -153,7 +165,9 @@
                                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     <ul>
                                         <li>July 17, 2016</li>
-                                        <li><a href="#">Reply</a></li>
+                                        <li><a href="javascript:void(0);" class="reply_btn"
+                                        >Reply</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -287,23 +301,44 @@
 </div>
 </body>
 </html>
-
 <script th:inline="javascript">
     var articleId = [[${articleDetailsInfo['articleId']}]];
+    $(function () {
+        //页面加载完毕后开始执行的事件
 
-    $("#submitComment").click(function () {
-        var content = $("#commentText").val();
-        var articleId = [[${articleDetailsInfo['articleId']}]]
-        $.ajax({
-            type: "POST",
-            url: "/system/article/details/addComment",
-            data: {
-                content: content,
-                articleId : articleId,
-            },
+        $("#submitComment").click(function () {
+            var content = $("#commentText").val();
+            $.ajax({
+                type: "POST",
+                url: "/system/article/details/addComment",
+                data: {
+                    content: content,
+                    articleId: articleId,
+                },
+            })
         })
+    });
 
-    })
+    function commentReply(replyId, fromUserId) {
+        var articleId = [[${articleDetailsInfo['articleId']}]]
+        $(".reply_btn").click(function () {
+            $(".reply_textarea").remove();
+            $(this).parent().append("<div class='reply_textarea'><textarea name=''id='replyContent' cols='40' rows='5' ></textarea><br/><input type='submit' id='submitCommentReply' value='发表' /></div>");
+            $("#submitCommentReply").click(function () {
+                var replyContent = $("#replyContent").val();
+                $.ajax({
+                    type: "POST",
+                    url: '/system/article/details/addCommentReply',
+                    data: {
+                        articleId: articleId,
+                        content: replyContent,
+                        replyId: replyId,
+                        fromUserId: fromUserId,
+                    },
+                })
+            })
+        });
+    }
 
 
 </script>

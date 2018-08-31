@@ -1,10 +1,14 @@
 package com.echo.common.shiro;
 
+import com.echo.common.shiro.cache.RedisCacheManager;
+import com.echo.common.shiro.session.ShiroSessionManager;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
@@ -13,8 +17,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * shiro 相关配置文件
+ */
 @Configuration
 public class ShiroConfig {
+    @Autowired
+    RedisSessionDao sessionDao;
+    @Autowired
+    RedisCacheManager cacheManager;
+
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -58,10 +70,18 @@ public class ShiroConfig {
         return hashedCredentialsMatcher;
     }
 
+    /**
+     * 安全管理
+     *
+     * @param shiroRealm
+     * @return
+     */
     @Bean
-    public SecurityManager securityManager(ShiroRealm shiroRealm) {
+    public SecurityManager securityManager(ShiroRealm shiroRealm, DefaultWebSessionManager webSessionManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(shiroRealm);
+        securityManager.setSessionManager(webSessionManager);
+        //记住我 rememberme manager还没写
         return securityManager;
     }
 
@@ -83,6 +103,18 @@ public class ShiroConfig {
         r.setExceptionAttribute("ex");     // Default is "exception"
         //r.setWarnLogCategory("example.MvcLogger");     // No default
         return r;
+    }
+
+    @Bean
+    public DefaultWebSessionManager configWebSessionManager() {
+        DefaultWebSessionManager manager = new DefaultWebSessionManager();
+        manager.setCacheManager(cacheManager);// 换成Redis的缓存管理器
+        manager.setSessionDAO(sessionDao);
+        manager.setDeleteInvalidSessions(true);
+        manager.setGlobalSessionTimeout(sessionDao.getExpireTime());
+        manager.setSessionValidationSchedulerEnabled(true);
+
+        return manager;
     }
 
 

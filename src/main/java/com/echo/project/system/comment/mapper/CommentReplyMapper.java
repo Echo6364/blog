@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 评论回复Mapper接口类
+ */
 @Repository
 public interface CommentReplyMapper {
     int deleteByPrimaryKey(Integer id);
@@ -21,5 +24,5 @@ public interface CommentReplyMapper {
 
     Long addCommentReply (CommentReply commentReply);
 
-    List<CommentReply> getCommentReplyByUserId(String userId);
+    List<CommentReply> getCommentReplyByUserId(Integer userId);
 }

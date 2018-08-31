@@ -2,6 +2,7 @@ package com.echo.blog.comment;
 
 import com.echo.BlogApplication;
 import com.echo.project.system.comment.domain.Comment;
+import com.echo.project.system.comment.domain.CommentReply;
 import com.echo.project.system.comment.service.CommentService;
 import com.echo.project.system.user.domain.User;
 import com.echo.project.system.user.service.UserService;
@@ -29,9 +30,14 @@ public class CommentTest {
     @Test
     public void addComment() {
         Comment comment = new Comment();
+
         comment.setArticleId(1);
         comment.setContent("222222222222222222222222222222222222222222222222222222");
         System.out.println(commentService.getComment(50,1,5));
+        CommentReply commentReply = new CommentReply();
+        commentReply.setArticleId(1);
+        commentReply.setContent("222222222222222222222222222222222222222222222222222222");
+        commentService.addCommentReply(commentReply);
     }
 
 }

@@ -3,6 +3,9 @@ package com.echo.project.system.user.mapper;
 import com.echo.project.system.user.domain.User;
 import org.springframework.stereotype.Repository;
 
+/**
+ * User数据库接口类
+ */
 @Repository
 public interface UserMapper {
 

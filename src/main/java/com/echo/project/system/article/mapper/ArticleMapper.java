@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 文章Mapper接口类
+ */
 @Repository
 public interface ArticleMapper {
     int deleteArticleByArticleId(Integer articleId);

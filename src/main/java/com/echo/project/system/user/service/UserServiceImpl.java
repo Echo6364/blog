@@ -13,7 +13,7 @@ import static com.echo.common.utils.DateUtils.getNowDate;
 /**
  * @author echo
  * <p>
- * 2018-7-30
+ * 2018-8-14
  * <p>
  * 接口实现类
  */
@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 用户注册 并设定注册时间
+     * @param user
+     * @return
+     */
     @Override
     public Long userSignUp(User user) {
         Date date = getNowDate();
@@ -32,8 +37,12 @@ public class UserServiceImpl implements UserService {
         return userMapper.userSignUp(user);
     }
 
+    /**
+     * 检查登录ID是否唯一
+     * @param loginId
+     * @return
+     */
     @Override
-
     public String checkLoginIdUnique(String loginId) {
         int count = userMapper.checkLoginIdUnique(loginId);
         if (count > 0) {
@@ -57,16 +66,31 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    /**
+     * 根据登录ID搜索用户信息
+     * @param loginId
+     * @return
+     */
     @Override
     public User searchByLoginId(String loginId) {
         return userMapper.searchByLoginId(loginId);
     }
 
+    /**
+     * 根据登录Id获得权限信息
+     * @param loginId
+     * @return
+     */
     @Override
     public String getRoleByLoginId(String loginId) {
         return userMapper.getRoleByLoginId(loginId);
     }
 
+    /**
+     * 编辑用户信息
+     * @param user
+     * @return
+     */
     @Override
     public Long editUserInfo(User user) {
         Date date = getNowDate();
@@ -74,6 +98,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.editUserInfo(user);
     }
 
+    /**
+     * 获得用户信息
+     * @param userId
+     * @return
+     */
     @Override
     public User getUserInfo(Integer userId) {
         return userMapper.getUserInfo(userId);

@@ -61,16 +61,26 @@
                 <!-- /.navbar-collapse -->
             </nav>
         </div>
-        <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s"
+        <div class="nav navbar-nav navbar-right write-icons wow fadeInLeft animated animated " data-wow-delay=".5s"
              style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
             <ul>
-                <li><a href="#"> </a></li>
-                <li><a href="#" class="pin"> </a></li>
-                <li><a href="#" class="in"> </a></li>
-                <li><a href="#" class="be"> </a></li>
-
-                <li><a href="#" class="vimeo"> </a></li>
+                <a href="/system/article/add"></a>
             </ul>
+        </div>
+        <div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s"
+             style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+            <div class="header-setting">
+                <div class="setting">
+                    <input class="setting_box" type="checkbox" id="setting_box">
+                    <label class="icon-setting" for="setting_box"><span class="glyphicon glyphicon-cog"
+                                                                        aria-hidden="true"></span></label>
+                    <div class="setting_form">
+                        <form action="/system/user/info" method="post">
+                            <input type="submit" value="编辑个人资料">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
