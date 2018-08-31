@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-08-17 18:21:13
+Date: 2018-08-31 18:24:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,13 +27,13 @@ CREATE TABLE `article` (
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `from_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `read_number` int(11) DEFAULT NULL,
+  `article_view` int(11) DEFAULT NULL,
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modify` datetime DEFAULT NULL,
   `sort` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `article_index` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of article
@@ -57,6 +57,12 @@ INSERT INTO `article` VALUES ('42', '<p>测试测试测试测试测试测试测�
 INSERT INTO `article` VALUES ('43', null, null, null, null, null, null, null, '2018-08-17 17:20:51', null, null, null);
 INSERT INTO `article` VALUES ('44', null, null, null, null, null, null, null, '2018-08-17 17:22:09', null, null, null);
 INSERT INTO `article` VALUES ('45', null, null, null, null, null, null, null, '2018-08-17 17:23:35', null, null, null);
+INSERT INTO `article` VALUES ('46', null, null, null, null, null, null, null, '2018-08-20 09:23:04', null, null, null);
+INSERT INTO `article` VALUES ('47', null, null, null, null, null, null, null, '2018-08-24 09:35:53', null, null, null);
+INSERT INTO `article` VALUES ('48', null, null, null, null, null, null, null, '2018-08-27 02:29:16', null, null, null);
+INSERT INTO `article` VALUES ('49', null, null, null, null, null, null, null, '2018-08-27 08:21:45', null, null, null);
+INSERT INTO `article` VALUES ('50', '<p>测试测试测试测试测试测试测试测试测试测试</p>', null, null, '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试', '测试测试测试测试测试测试测试测试测试测试', null, null, '2018-08-27 08:37:37', null, null, null);
+INSERT INTO `article` VALUES ('51', null, null, null, null, null, null, null, '2018-08-30 08:24:56', null, null, null);
 
 -- ----------------------------
 -- Table structure for authority_info
@@ -79,17 +85,24 @@ CREATE TABLE `authority_info` (
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `article_id` int(11) DEFAULT NULL,
   `article_type` int(11) DEFAULT NULL,
   `content` varchar(450) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `from_user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
+INSERT INTO `comment` VALUES ('1', '1', null, '222222222222222222222222222222222222222222222222222222', '123');
+INSERT INTO `comment` VALUES ('2', '50', null, '2111111111111111111111111111111111111111111111113', '123');
+INSERT INTO `comment` VALUES ('3', '50', null, '111111111111111111111111111111111111111111111123', '123');
+INSERT INTO `comment` VALUES ('4', '50', null, '21111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111134', '123');
+INSERT INTO `comment` VALUES ('7', '50', null, '1222222223', null);
+INSERT INTO `comment` VALUES ('8', '50', null, '2333333333333', null);
+INSERT INTO `comment` VALUES ('9', '50', null, '12313312', null);
 
 -- ----------------------------
 -- Table structure for comment_reply
@@ -98,17 +111,25 @@ DROP TABLE IF EXISTS `comment_reply`;
 CREATE TABLE `comment_reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) DEFAULT NULL,
+  `article_id` int(11) DEFAULT NULL,
   `reply_id` int(11) DEFAULT NULL,
   `reply_type` int(11) DEFAULT NULL,
   `content` varchar(450) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `from_user_id` int(11) DEFAULT NULL,
   `to_user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of comment_reply
 -- ----------------------------
+INSERT INTO `comment_reply` VALUES ('1', null, null, null, null, null, null, null);
+INSERT INTO `comment_reply` VALUES ('2', null, '1', null, null, '222222222222222222222222222222222222222222222222222222', null, null);
+INSERT INTO `comment_reply` VALUES ('3', null, '50', null, null, null, null, null);
+INSERT INTO `comment_reply` VALUES ('18', null, '50', null, null, '1233321332', null, null);
+INSERT INTO `comment_reply` VALUES ('19', null, '50', null, null, '1233321332', null, null);
+INSERT INTO `comment_reply` VALUES ('20', null, '50', null, null, '1233321332', null, null);
+INSERT INTO `comment_reply` VALUES ('21', null, '50', '2', null, '1231', '123', null);
 
 -- ----------------------------
 -- Table structure for user_info
@@ -118,7 +139,7 @@ CREATE TABLE `user_info` (
   `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `login_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `login_password` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `user_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_type` int(11) DEFAULT NULL,
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
@@ -126,15 +147,17 @@ CREATE TABLE `user_info` (
   `salt` varchar(32) DEFAULT NULL,
   `status` int(2) DEFAULT NULL,
   `remark` varchar(80) DEFAULT NULL,
-  `role` varchar(30) DEFAULT NULL,
-  `email` varchar(70) DEFAULT NULL,
+  `role` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `register_ip` varchar(64) DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10013 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10015 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('10001', 'admin', '123456', 'admin', null, '2018-08-10 15:12:26', '2018-08-10 15:12:26', '2018-08-10 15:12:26', null, null, null, 'admin', null);
-INSERT INTO `user_info` VALUES ('10002', 'sakura', '123456', 'Sakura', null, '2018-08-14 09:05:46', '2018-08-14 09:05:46', '2018-08-14 09:05:46', null, null, null, 'user', '123@163.com');
-INSERT INTO `user_info` VALUES ('10011', 'masuzu', '1ac36807ac3276e91b653c679684ea73', 'masuzu', null, '2018-08-14 17:40:15', '2018-08-14 17:40:15', '2018-08-14 17:40:15', '70fe394c709a8a46b48ca0ce6ad2916f', null, null, 'user', '123@163.com');
-INSERT INTO `user_info` VALUES ('10012', '123', 'ee3827d21f71ea24922b39f591736253', '123', null, '2018-08-16 17:48:49', '2018-08-16 17:48:49', '2018-08-16 17:48:49', 'f342a98b23e09b0ced64833304f9b6f9', null, null, 'user', '21');
+INSERT INTO `user_info` VALUES ('10001', 'admin', '3182d80e8a8e8905ea528ec69517fc76', 'admin', null, '2018-08-31 05:18:09', '2018-08-31 05:18:09', '2018-08-31 05:18:09', '5e6b89df2d61fca87b6e7cfc5bc7c708', null, null, 'user', '123456@163.com', null, null);
+INSERT INTO `user_info` VALUES ('10011', 'masuzu', '1ac36807ac3276e91b653c679684ea73', 'masuzu', null, '2018-08-14 17:40:15', '2018-08-14 17:40:15', '2018-08-14 17:40:15', '70fe394c709a8a46b48ca0ce6ad2916f', null, null, 'user', '123@163.com', null, null);
+INSERT INTO `user_info` VALUES ('10012', '123', 'ee3827d21f71ea24922b39f591736253', '123', null, '2018-08-16 17:48:49', '2018-08-16 17:48:49', '2018-08-16 17:48:49', 'f342a98b23e09b0ced64833304f9b6f9', null, null, 'user', '21', null, null);
+INSERT INTO `user_info` VALUES ('10013', '1', 'a7d1352b5e01d1aa51558228d5641c11', '1', null, '2018-08-29 06:21:52', '2018-08-29 06:21:52', '2018-08-29 06:21:52', '872c887959634e23590743477aa57e0c', null, null, 'user', '1', null, null);
