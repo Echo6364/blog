@@ -2,7 +2,9 @@ package com.echo.project.system.user.service;
 
 import com.echo.project.system.user.domain.User;
 
-
+/**
+ * UserService相关接口类
+ */
 public interface UserService {
     public Long userSignUp(User user);
 
@@ -20,5 +22,5 @@ public interface UserService {
 
     public Long editUserInfo(User user);
 
-    public User getUserInfo(Integer userId);
+    public User getUserInfo(String loginId);
 }

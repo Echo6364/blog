@@ -37,7 +37,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     *
+     * 删除文章
      * @param articleId
      * @return
      */
@@ -59,7 +59,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * 获取单篇文章
+     * 根据文章Id 获取文章
      * @param articleId
      * @return
      */
@@ -69,7 +69,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * 根据点击数 排行  5篇
+     * 根据点击量获取文章列表
      * @return
      */
     @Override
@@ -78,7 +78,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * 根据分类获取文章列表
+     * 根据文章分类获取文章
      * @param sort
      * @return
      */
@@ -88,7 +88,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     *获取所有文章并分页 使用PageHelper
+     * 获取所有文章并使用PageHelper插件分页
      * @param currentPage
      * @param pageSize
      * @return
@@ -102,7 +102,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * 选择所有文章
+     * 获取所有文章
      * @return
      */
     @Override

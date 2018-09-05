@@ -5,24 +5,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * 评论Mapper接口类
- */
 @Repository
 public interface CommentMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Comment record);
-
-    int insertSelective(Comment record);
-
-    Comment selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Comment record);
-
-    int updateByPrimaryKey(Comment record);
-
+    /**
+     * 添加评论
+     * @param comment
+     * @return
+     */
     Long addComment(Comment comment);
 
+    /**
+     * 获取评论
+     * @param articleId
+     * @return
+     */
     List<Comment> getComment(Integer articleId);
 }

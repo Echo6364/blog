@@ -5,6 +5,9 @@ import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
+/**
+ * ArticleService 接口类
+ */
 public interface ArticleService {
     public Long addArticle(Article article);
 

@@ -2,6 +2,9 @@ package com.echo.project.system.user.domain;
 
 import java.util.Date;
 
+/**
+ * User的实体类
+ */
 public class User {
     private Long userId;
 

@@ -11,11 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * 评论Service实现类 将Comment和CommentReply合并   因为想要实现评论嵌套做了两个实现类
- */
 @Service("commentService")
-
+/**
+ * 评论功能Service实现类
+ */
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
@@ -34,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 获取评论列表
+     * 获取评论 并分页
      * @param articleId
      * @param currentPage
      * @param pageSize
@@ -49,7 +48,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 评论回复
+     * 添加评论回复
      * @param commentReply
      * @return
      */
@@ -59,7 +58,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 获取评论回复信息
+     * 获取评论回复列表
      * @param userId
      * @return
      */

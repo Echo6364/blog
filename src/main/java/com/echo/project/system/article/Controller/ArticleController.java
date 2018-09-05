@@ -28,8 +28,7 @@ public class ArticleController {
     }
 
     /**
-     * 获取文章列表 分页 默认分页 10篇每页
-     * 右侧的点击排行
+     * 获取文章分页 获取点击量排行
      * @param model
      * @return
      */
@@ -45,11 +44,6 @@ public class ArticleController {
         return "system/article/articlePage";
     }
 
-    /**
-     * 文章列表
-     * @param model
-     * @return
-     */
     @RequestMapping(value = "/articleList")
     public String selectAllArticleByPage(Model model/**, @RequestParam("currentPage") int currentPage**/) {
         int pageSize = 10;
@@ -59,11 +53,6 @@ public class ArticleController {
         return ("system/article/articleList");
     }
 
-    /**
-     * 根据点击数获取列表
-     * @param model
-     * @return
-     */
     @RequestMapping(value = "/articleListOrderByArticleView")
     public String articleListOrderByArticleView(Model model) {
         List<Article> articleListOrderByArticleView = articleService.selectArticleOrderByArticleView();
@@ -72,7 +61,7 @@ public class ArticleController {
     }
 
     /**
-     * 文章的详细信息 载入后包括初始化内容 获取评论 获取右侧的点击排行
+     * 获取文章详细信息 评论分页 获取评论信息
      * @param articleId
      * @param userId
      * @param model

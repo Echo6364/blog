@@ -13,6 +13,12 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
+    /**
+     * 添加评论
+     * @param articleId
+     * @param comment
+     * @return
+     */
     @RequestMapping(value = "/details/addComment")
     public String addComment(Integer articleId, Comment comment) {
         articleId = Integer.valueOf(articleId);
@@ -21,6 +27,12 @@ public class CommentController {
         return "system/article/details/addComment";
     }
 
+    /**
+     * 添加评论回复
+     * @param articleId
+     * @param commentReply
+     * @return
+     */
     @RequestMapping(value = "/details/addCommentReply")
     public String addCommentReply(Integer articleId, CommentReply commentReply) {
         articleId = Integer.valueOf(articleId);

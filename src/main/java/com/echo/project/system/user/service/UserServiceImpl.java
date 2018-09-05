@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     /**
-     * 用户注册 并设定注册时间
+     * 用户注册
      * @param user
      * @return
      */
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 检查登录ID是否唯一
+     * 检查登录信息是否唯一
      * @param loginId
      * @return
      */
@@ -51,23 +51,38 @@ public class UserServiceImpl implements UserService {
         return UserConstants.USER_NAME_UNIQUE;
     }
 
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
     @Override
     public int updateUser(User user) {
         return 0;
     }
 
+    /**
+     * 根据用户名获取用户信息
+     * @param userName
+     * @return
+     */
     @Override
     public User selectUserByUserName(String userName) {
         return null;
     }
 
+    /**
+     * 根据email获取用户信息
+     * @param email
+     * @return
+     */
     @Override
     public User selectUserByEmail(String email) {
         return null;
     }
 
     /**
-     * 根据登录ID搜索用户信息
+     * 根据登录Id获取用户信息
      * @param loginId
      * @return
      */
@@ -77,7 +92,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 根据登录Id获得权限信息
+     * 根据登录Id获取权限信息
      * @param loginId
      * @return
      */
@@ -99,12 +114,12 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 获得用户信息
-     * @param userId
+     * 获取用户信息
+     * @param loginId
      * @return
      */
     @Override
-    public User getUserInfo(Integer userId) {
-        return userMapper.getUserInfo(userId);
+    public User getUserInfo(String loginId) {
+        return userMapper.getUserInfo(loginId);
     }
 }
