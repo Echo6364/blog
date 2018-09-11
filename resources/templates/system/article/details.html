@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="zh">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="applijewelleryion/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+
+
+
+
+    </script>
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- animation-effect -->
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <script src="/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- //animation-effect -->
+</head>
+<body>
+<div class="header" id="ban">
+    <div class="container">
+        <div class="head-left">
+            <div class="header-search">
+                <div class="search">
+                    <input class="search_box" type="checkbox" id="search_box">
+                    <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search"
+                                                                      aria-hidden="true"></span></label>
+                    <div class="search_form">
+                        <form action="#" method="post">
+                            <input type="text" name="Search" placeholder="Search...">
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header_right">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <nav class="link-effect-7" id="link-effect-7">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index">Home</a></li>
+                            <li><a href="/system/user/user.html">About</a></li>
+                            <li class="active act"><a href="/system/article/articlePage">Technology</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <div class="nav navbar-nav navbar-right write-icons wow fadeInLeft animated animated " data-wow-delay=".5s"
+             style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
+            <ul>
+                <a href="/system/article/add"></a>
+            </ul>
+        </div>
+        <div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s"
+             style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+            <div class="header-setting">
+                <div class="setting">
+                    <input class="setting_box" type="checkbox" id="setting_box">
+                    <label class="icon-setting" for="setting_box"><span class="glyphicon glyphicon-cog"
+                                                                        aria-hidden="true"></span></label>
+                    <div class="setting_form">
+                        <form action="/system/user/info" method="post">
+                            <input type="submit" value="编辑个人资料">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--start-main-->
+<div class="header-bottom">
+    <div class="container">
+        <div class="logo">
+            <h1><a href="index.html">STYLE BLOG</a></h1>
+            <p><label class="of"></label>LET'S MAKE A PERFECT STYLE<label class="on"></label></p>
+        </div>
+    </div>
+</div>
+<!-- banner -->
+
+<div class="banner-1">
+
+</div>
+
+<!-- technology-left -->
+<div class="technology">
+    <div class="container">
+        <div class="col-md-9 technology-left">
+            <div class="agileinfo">
+                <div class="single">
+                    <div class="b-bottom">
+                        <h5 class="top" th:text="${articleDetailsInfo['title']}">What turn out consetetur sadipscing
+                            elit</h5>
+                        <p class="sub" th:text="${articleDetailsInfo['text']}">Lorem Ipsum is simply dummy text of the
+                            printing
+                            and typesetting industry.Lorem
+                            Ipsum has been the industry's standard dummy text ever since,Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry.</p>
+                        <p th:text="${articleDetailsInfo['gmtCreate']}">On Aug 01 <a class="span_link" href="#">
+                        </a><a class="span_link" href="#"><span
+                                class="glyphicon glyphicon-eye-open"
+                                th:value="${articleDetailsInfo['articleView']}"></span>56 </a></p>
+
+                    </div>
+                </div>
+
+
+                <div class="response">
+                    <h4>Responses</h4>
+                    <div class="media response-info" th:each="articleDetails : ${commentList}">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img src="/images/sin1.jpg" class="img-responsive" alt="">
+                            </a>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p th:text="${articleDetails.content}">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit,There are many variations of
+                                passages of Lorem Ipsum available,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <ul>
+                                <!--<li>Jun 21, 2016</li>-->
+                                <li><a href="javascript:void(0);" class="reply_btn"
+                                       th:onclick="|javascript:commentReply(${articleDetails.id},${articleDetails.fromUserId})|">Reply</a>
+                                </li>
+                            </ul>
+                            <div class="media response-info">
+                                <div class="media-left response-text-left">
+                                    <a href="#">
+                                        <img src="/images/sin2.jpg" class="img-responsive" alt="">
+                                    </a>
+                                </div>
+                                <div class="media-body response-text-right">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many
+                                        variations of passages of Lorem Ipsum available,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <ul>
+                                        <li>July 17, 2016</li>
+                                        <li><a href="javascript:void(0);" class="reply_btn"
+                                        >Reply</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="coment-form">
+                <h4>Leave your comment</h4>
+                <form action="#" method="post">
+                    <textarea onfocus="this.value = '';"
+                              onblur="if (this.value == '') {this.value = 'Your Comment...';}" required=""
+                              id="commentText">Your Comment...</textarea>
+                    <input type="submit" value="Submit Comment" id="submitComment">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- technology-right -->
+        <div class="col-md-3 technology-right">
+
+
+            <div class="blo-top1">
+
+                <div class="tech-btm">
+                    <div class="search-1">
+                        <form action="#" method="post">
+                            <input type="search" name="Search" value="Search" onfocus="this.value = '';"
+                                   onblur="if (this.value == '') {this.value = 'Search';}" required="">
+                            <input type="submit" value=" ">
+                        </form>
+                    </div>
+                    <h4>Popular Posts </h4>
+                    <div class="blog-grids">
+                        <div class="blog-grid-left">
+                            <a href="singlepage.html"><img src="images/t2.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="blog-grid-right">
+
+                            <h5><a href="singlepage.html">Pellentesque dui Maecenas male</a></h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="blog-grids">
+                        <div class="blog-grid-left">
+                            <a href="singlepage.html"><img src="images/m2.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="blog-grid-right">
+
+                            <h5><a href="singlepage.html">Pellentesque dui Maecenas male</a></h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="blog-grids">
+                        <div class="blog-grid-left">
+                            <a href="singlepage.html"><img src="images/f2.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="blog-grid-right">
+
+                            <h5><a href="singlepage.html">Pellentesque dui Maecenas male</a></h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="blog-grids">
+                        <div class="blog-grid-left">
+                            <a href="singlepage.html"><img src="images/t3.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="blog-grid-right">
+
+                            <h5><a href="singlepage.html">Pellentesque dui Maecenas male</a></h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="blog-grids">
+                        <div class="blog-grid-left">
+                            <a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="blog-grid-right">
+
+                            <h5><a href="singlepage.html">Pellentesque dui Maecenas male</a></h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="insta">
+                        <h4>Instagram</h4>
+                        <ul>
+
+                            <li><a href="singlepage.html"><img src="images/t1.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/m1.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/f1.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/m2.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/f2.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/t2.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/f3.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/t3.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at
+                        pro</p>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="clearfix"></div>
+        <!-- technology-right -->
+    </div>
+</div>
+
+<div class="copyright wow fadeInDown" data-wow-duration="0.8s" data-wow-delay="0.2s">
+    <div class="container">
+        <p><a target="_blank" title="Echo Blog">Echo Blog</a> - 2018 </p>
+    </div>
+</div>
+</body>
+</html>
+<script th:inline="javascript">
+    var articleId = [[${articleDetailsInfo['articleId']}]];
+    $(function () {
+        //页面加载完毕后开始执行的事件
+
+        $("#submitComment").click(function () {
+            var content = $("#commentText").val();
+            $.ajax({
+                type: "POST",
+                url: "/system/article/details/addComment",
+                data: {
+                    content: content,
+                    articleId: articleId,
+                },
+            })
+        })
+    });
+
+    function commentReply(replyId, fromUserId) {
+        var articleId = [[${articleDetailsInfo['articleId']}]]
+        $(".reply_btn").click(function () {
+            $(".reply_textarea").remove();
+            $(this).parent().append("<div class='reply_textarea'><textarea name=''id='replyContent' cols='40' rows='5' ></textarea><br/><input type='submit' id='submitCommentReply' value='发表' /></div>");
+            $("#submitCommentReply").click(function () {
+                var replyContent = $("#replyContent").val();
+                $.ajax({
+                    type: "POST",
+                    url: '/system/article/details/addCommentReply',
+                    data: {
+                        articleId: articleId,
+                        content: replyContent,
+                        replyId: replyId,
+                        fromUserId: fromUserId,
+                    },
+                })
+            })
+        });
+    }
+
+
+</script>
